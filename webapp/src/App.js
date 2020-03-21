@@ -35,6 +35,7 @@ function App() {
                           MIN(c.CompanyName) as Company,
                           MIN(c.Category) as Category,
                           MIN(c._event_time) AS EventTime,
+                          MIN(c.Source) AS Source,
                           c.Title,
                           c.CompanyName
                       FROM
@@ -108,6 +109,7 @@ function App() {
             <div>
               {/* <h3 style={{ margin: '24px 0' }}>Golang Jobs in Singapore</h3> */}
               <Title level={2}>Golang Jobs in Singapore</Title>
+              Sources: Indeed, LinkedIn, JobsDB
               <List
                 itemLayout="horizontal"
                 dataSource={jobs}
@@ -115,11 +117,11 @@ function App() {
                   <List.Item>
                     <List.Item.Meta
                       // avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}
-                      title={<a href={item.JobUrl} target="_blank"><Title level={4}>{item.Title}</Title></a>}
-                      description={<span><Text strong> {item.Company}</Text><Text code><Moment>{item.EventTime}</Moment></Text></span>}
-                    />
-                    {item.Summary}
-                    <br/>
+                      title={<a href={item.JobUrl} target="_blank"><Title level={4}>{item.Title} @ {item.Company}</Title></a>}
+                      // description={item.Company}
+                    />                                    
+                    {item.Summary}<br/>
+                    {<div><Text strong>Source: {item.Source}</Text> <Text code>Last Updated: <Moment>{item.EventTime}</Moment></Text></div>}
                    
                    
                   </List.Item>
