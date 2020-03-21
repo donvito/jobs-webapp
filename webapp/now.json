@@ -1,5 +1,7 @@
 {
-    "env": {
-      "REACT_APP_ROCKSET_API_KEY": "@react_app_rockset_api_key"
+    "build": {
+        "env": {
+            "REACT_APP_ROCKSET_API_KEY": "@react_app_rockset_api_key"
+        }
     }
-  }
+}
