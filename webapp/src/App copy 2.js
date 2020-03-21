@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import 'antd/dist/antd.css';
 import './index.css';
 import { Layout, Menu, Breadcrumb } from 'antd';
-import { UserOutlined, LaptopOutlined, NotificationOutlined, RightCircleFilled, UploadOutlined, VideoCameraOutlined } from '@ant-design/icons';
+import { UserOutlined, LaptopOutlined, NotificationOutlined, RightCircleFilled } from '@ant-design/icons';
 import Moment from 'react-moment';
 import { List, Typography } from 'antd';
 
@@ -64,28 +64,49 @@ function App() {
 
   return (
     <Layout>
-    <Sider
-      breakpoint="lg"
-      collapsedWidth="0"
-      onBreakpoint={broken => {
-        console.log(broken);
-      }}
-      onCollapse={(collapsed, type) => {
-        console.log(collapsed, type);
-      }}
-    >
-      <div className="logo" />
-      <Menu theme="dark" mode="inline" defaultSelectedKeys={['4']}>        
-        <Menu.Item key="1">
-          <UserOutlined />
-          <span className="nav-text">Golang Jobs Search</span>
-        </Menu.Item>
-      </Menu>
-    </Sider>
-    <Layout>
-      <Header className="site-layout-sub-header-background" style={{ padding: 0 }} />
-      <Content style={{ margin: '24px 16px 0' }}>
-        <div className="site-layout-background" style={{ padding: 24, minHeight: 360 }}>       
+      <Header className="header">
+        <div className="logo" />
+        <Menu
+          theme="dark"
+          mode="horizontal"
+          defaultSelectedKeys={['2']}
+          style={{ lineHeight: '64px' }}
+        >
+          <Menu.Item key="1">Jobs Search</Menu.Item>
+          {/* <Menu.Item key="2">nav 2</Menu.Item>
+          <Menu.Item key="3">nav 3</Menu.Item> */}
+        </Menu>
+      </Header>
+      <Content style={{ padding: '0 50px' }}>
+        {/* <Breadcrumb style={{ margin: '16px 0' }}>
+          <Breadcrumb.Item>Home</Breadcrumb.Item>
+
+        </Breadcrumb> */}
+        <Layout className="site-layout-background" style={{ padding: '24px 0' }}>
+          <Sider className="site-layout-background" width={200}>
+            <Menu
+              mode="inline"
+              defaultSelectedKeys={['1']}
+              defaultOpenKeys={['sub1']}
+              style={{ height: '100%' }}
+            >
+              <SubMenu
+                key="sub1"
+                title={
+                  <span>
+                    <UserOutlined />
+                  Jobs
+                </span>
+                }
+              >
+                <Menu.Item key="1">Golang</Menu.Item>
+                {/* <Menu.Item key="2">Flutter</Menu.Item> */}
+              </SubMenu>
+
+            </Menu>
+          </Sider>
+          <Content style={{ padding: '0 24px', minHeight: 280 }}>
+            <div>
               {/* <h3 style={{ margin: '24px 0' }}>Golang Jobs in Singapore</h3> */}
               <Title level={2}>Golang Jobs in Singapore</Title>
               Sources: Indeed, LinkedIn, JobsDB
@@ -106,12 +127,14 @@ function App() {
                   </List.Item>
                 )}
               />
-        </div>
+
+            </div>
+
+          </Content>
+        </Layout>
       </Content>
-      <Footer style={{ textAlign: 'center' }}>Jobs Search</Footer>
+      <Footer style={{ textAlign: 'center' }}>Golang Jobs Search</Footer>
     </Layout>
-  </Layout>
-    
   );
 }
 
