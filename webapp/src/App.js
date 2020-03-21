@@ -23,7 +23,7 @@ function App() {
       {
         method: "POST",
         headers: new Headers({
-          Authorization: 'ApiKey ' + process.env.react_app_rockset_api_key,
+          Authorization: 'ApiKey ' + process.env.REACT_APP_ROCKSET_API_KEY,
           'Content-Type': 'application/json'
         }),
         body: JSON.stringify({
