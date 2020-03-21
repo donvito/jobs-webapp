@@ -1,5 +1,5 @@
 {
     "env": {
-      "VARIABLE_NAME": "@REACT_APP_ROCKSET_API_KEY"
+      "REACT_APP_ROCKSET_API_KEY": "@react_app_rockset_api_key"
     }
   }
