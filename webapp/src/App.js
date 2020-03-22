@@ -18,39 +18,14 @@ function App() {
   //const [totalPostsCount, setTotalPostsCount] = useState({})
 
   useEffect(() => {
-
-    fetch('https://api.rs2.usw2.rockset.com/v1/orgs/self/queries',
+    
+    fetch('https://api.rs2.usw2.rockset.com/v1/orgs/self/ws/jobportal/lambdas/go-jobs/versions/1',
       {
         method: "POST",
         headers: new Headers({
           Authorization: 'ApiKey ' + process.env.REACT_APP_ROCKSET_API_KEY,
           'Content-Type': 'application/json'
-        }),
-        body: JSON.stringify({
-          "sql": {
-            "query": `Select
-                          MIN(c._id) as id,
-                          MIN(c.JobUrl) as JobUrl,
-                          MIN(c.Summary) as Summary,
-                          MIN(c.CompanyName) as Company,
-                          MIN(c.Category) as Category,
-                          MIN(c._event_time) AS EventTime,
-                          MIN(c.Source) AS Source,
-                          c.Title,
-                          c.CompanyName
-                      FROM
-                          jobportal.jobs as c
-                      WHERE JobUrl LIKE 'http%'  
-                      AND c.Category = 'go'     
-                      GROUP BY
-                          c.Title,
-                          c.CompanyName
-                      ORDER BY id desc
-                      `
-
-
-          }
-        }),
+        })
       })
       .then(response => response.json())
       .then(result => {
