@@ -19,7 +19,7 @@ function App() {
 
   useEffect(() => {
     
-    fetch('https://api.rs2.usw2.rockset.com/v1/orgs/self/ws/jobportal/lambdas/go-jobs/versions/1',
+    fetch('https://api.rs2.usw2.rockset.com/v1/orgs/self/ws/jobportal/lambdas/go-jobs/versions/2',
       {
         method: "POST",
         headers: new Headers({
