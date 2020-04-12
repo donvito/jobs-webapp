@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import 'antd/dist/antd.css';
 import './index.css';
-import { Layout, Menu } from 'antd';
-import { UserOutlined } from '@ant-design/icons';
+import { Layout } from 'antd';
 import Moment from 'react-moment';
 import { List, Typography, Input } from 'antd';
 
-const { Header, Content, Footer, Sider } = Layout;
+const { Content, Footer } = Layout;
 const { Title, Text } = Typography;
 const { Search } = Input;
 
@@ -35,14 +34,10 @@ function App() {
 
   }, [])
 
-  return (
-
-    <Layout>
-      {/* <Header className="site-layout-sub-header-background" style={{ padding: 20, position: 'fixed', zIndex: 1, width: '100%' }} /> */}
-
-      <Content style={{ margin: '24px 80px 0 12px'}}>
-        <div className="site-layout-background" style={{ padding: 0, minHeight: 360 }}>
-          {/* <h3 style={{ margin: '24px 0' }}>Golang Jobs in Singapore</h3> */}
+  return (  
+    <Layout className="site-layout-background">
+      <Content className="site-layout-background">
+        <div  style={{ paddingTop: 0, paddingLeft: 20, paddingRight:20, alignContent: 'center' }} >
           
           <Title level={2} style={{ textAlign: 'center' }}><img src="Go-Logo_Fuchsia.png" alt="Logo" width="150px" height="120px"/><br/>Golang Jobs (Singapore)</Title>
               
@@ -83,30 +78,30 @@ function App() {
           /><br /><br />
           <Text style={{ textAlign: 'center' }}>Sources: Indeed, LinkedIn, JobsDB</Text><br />
           <Text strong>Search results {jobs.length} jobs</Text><br />
-          <List
-            itemLayout="horizontal"
-            dataSource={jobs}
-            renderItem={item => (
-              <List.Item>
-                <List.Item.Meta
-                  // avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}
-                  title={<span><a href={item.JobUrl}><Title level={4}>{item.Title}</Title></a><Text strong>{item.Company}, {item.Location}</Text></span>}
-                // description={item.Company}
-                />
-                {item.Summary}<br />
-                {/* <Text strong>Source: {item.Source}</Text>  */}
-                {<div><Text code>Last Updated: <Moment>{item.EventTime}</Moment></Text></div>}
+        
+              <List
+                itemLayout="horizontal"
+                dataSource={jobs}
+                renderItem={item => (
+                  <List.Item>
+                    <List.Item.Meta
+                      // avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}
+                      title={<span><a href={item.JobUrl}><Title level={4}>{item.Title}</Title></a><Text strong>{item.Company}, {item.Location}</Text></span>}
+                    // description={item.Company}
+                    />
+                    {item.Summary}<br />
+                    {/* <Text strong>Source: {item.Source}</Text>  */}
+                    {<div><Text code>Last Updated: <Moment>{item.EventTime}</Moment></Text></div>}
 
 
-              </List.Item>
-            )}
-          />
+                  </List.Item>
+                )}
+              />
+           
         </div>
       </Content>
       <Footer style={{ textAlign: 'center' }}>Jobs Search</Footer>
     </Layout>
-
-
   );
 }
 
